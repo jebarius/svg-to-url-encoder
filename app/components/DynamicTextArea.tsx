@@ -5,10 +5,11 @@ interface TextAreaProps {
     label:string,
     value:string,
     onInputChange?:(data: string) => void,
-    disabled?:boolean
+    disabled?:boolean,
+    placeholder:string
 }
 
-const DynamicTextArea = ({label, value, onInputChange, disabled = false}:TextAreaProps) => {
+const DynamicTextArea = ({label, value, onInputChange, disabled = false, placeholder}:TextAreaProps) => {
     const [textValue, setTextValue] = useState(value);
 
     const stringToSlug =(input: string): string => {
@@ -30,7 +31,7 @@ const DynamicTextArea = ({label, value, onInputChange, disabled = false}:TextAre
         <>
         
            
-        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+        {/* <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label> */}
         <textarea 
 
             rows="6" 
@@ -39,8 +40,8 @@ const DynamicTextArea = ({label, value, onInputChange, disabled = false}:TextAre
                 if(onInputChange) 
                     onInputChange(e.target.value)
             }} 
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-            placeholder="Write your thoughts here..."
+            className="block h-56 p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg border border-gray-300 focus:outline-none focus:ring-0  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+            placeholder={placeholder}
             disabled={disabled}
             defaultValue={textValue}
             >
