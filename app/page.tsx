@@ -1,95 +1,48 @@
+'use client';
+import React, {useState} from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
+import DynamicTextArea from "./components/DynamicTextArea";
 
-export default function Home() {
+const Home = () => {
+  const [input, setInput] = useState('');
+
+  const textAreaCallback = (str:string) => {
+    setInput(str);
+  } 
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+      <a
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
+              src="/jeb.svg"
+              alt=""
               width={100}
-              height={24}
+              height={100}
               priority
             />
           </a>
+      </div>
+
+
+      <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="bg-gray-200 p-4">
+          <DynamicTextArea key={'dynamic-text-input'} label="Your Input" value="" onInputChange={textAreaCallback}/>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className="bg-gray-200 p-4">
+          <DynamicTextArea key={'dynamic-text-encoded'} label="Your Encoded Input" value={input} disabled={true}/>
+          
+        </div>
+        <div className="bg-gray-200 p-4">{input}</div>
+        <div className="bg-gray-200 p-4">{input}</div>
       </div>
     </main>
   );
 }
+
+
+export default Home;
