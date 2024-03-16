@@ -8,12 +8,15 @@ import ColourToggle from "./components/ColourToggle";
 import Title from "./components/Title";
 import { BUTTON_STYLE, ALERT_SUCCESS_CONFIG, ALERT_FAIL_CONFIG, ALERT_TIMEOUT } from "./config";
 import Toast from "./components/Toast";
+import encodeSVG from "./utilities/encodeSvg";
+import { encode } from "punycode";
 
 
 
 const Home = () => {
   const [input, setInput] = useState('');
   const [url, setURL] = useState('');
+  const [encoded, setEncoded] = useState('');
   const [quotes, setQuotes] = useState('"');
   const [bgColour, setBgColour] = useState('bg-gray-700');
   const [showAlert, setShowAlert] = useState(false);
@@ -22,6 +25,7 @@ const Home = () => {
   const textAreaCallback = (str:string) => {
     setInput(str);
     setURL(SvgToBackgroundImageUrl(str));
+    setEncoded(encodeSVG(str));
   } 
 
   const CopyToClipboardButton = (text:string) => {
@@ -69,8 +73,17 @@ const Home = () => {
           <DynamicTextArea placeholder="<svg ..." key={'dynamic-text-input'} label="Your Input" value="" onInputChange={textAreaCallback}/>
         </div>
         <div className="rounded-md bg-gray-600 p-4">
-          <Title title="Encoded SVG" classes="mb-3 mt-1"/>
-          <DynamicTextArea placeholder="" key={'dynamic-text-encoded'} label="Your Encoded Input" value={input} disabled={true}/>
+          <Title title="Encoded SVG" classes="mb-4 mt-1" children={
+            <button 
+            className={BUTTON_STYLE + ' rounded-md self-start'}
+            onClick={(e:any) =>{
+              CopyToClipboardButton(encoded)
+            } }
+            >
+              Copy to clipboard
+            </button>
+          }/>
+          <DynamicTextArea placeholder="" key={'dynamic-text-encoded'} label="Your Encoded Input" value={encoded} disabled={true}/>
         </div>
         <div className="rounded-md bg-gray-600 p-4">
           <Title title="CSS Ready Code" classes="mb-4 mt-1" children={
