@@ -23,28 +23,22 @@ const DynamicTextArea = ({label, value, onInputChange, disabled = false, placeho
 
 
     useEffect(() => {
-        console.log(label,value)
         setTextValue(value);
     }, [value])
     return (
         <>
-        
-           
-        {/* <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label> */}
-        <textarea 
-            key={stringToSlug(label)}
-            onChange={(e:any) => {
-                if(onInputChange) 
-                    onInputChange(e.target.value)
-            }} 
-            className={`block h-56 p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg border border-gray-300 focus:outline-none focus:ring-0  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`} 
-            placeholder={placeholder}
-            disabled={disabled}
-            defaultValue={textValue}
-            style={{resize:'none'}}
-            
-            >
-            </textarea>
+            <textarea 
+                key={stringToSlug(label)}
+                onChange={(e:any) => {
+                    if(onInputChange) 
+                        onInputChange(e.target.value)
+                }} 
+                className={`block h-56 p-2.5 w-full text-sm text-gray-900 bg-gray-700 rounded-lg border border-gray-300 focus:outline-none focus:ring-0  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`} 
+                placeholder={placeholder}
+                disabled={disabled}
+                defaultValue={textValue}
+                style={{resize:'none'}}
+            ></textarea>
 
         </>
     )
