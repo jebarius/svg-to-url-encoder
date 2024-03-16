@@ -100,3 +100,16 @@ a {
     color-scheme: dark;
   }
 }
+
+
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+::-webkit-scrollbar-track {
+  background: #374151 !important;
+  border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a323d !important;
+  border-radius: 10px !important;
+}

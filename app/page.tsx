@@ -6,12 +6,18 @@ import DynamicTextArea from "./components/DynamicTextArea";
 import SvgToBackgroundImageUrl from "./utilities/SvgToURL";
 import ColourToggle from "./components/ColourToggle";
 import Title from "./components/Title";
-import { BUTTON_STYLE } from "./config";
+import { BUTTON_STYLE, ALERT_SUCCESS_CONFIG, ALERT_FAIL_CONFIG, ALERT_TIMEOUT } from "./config";
+import Toast from "./components/Toast";
+
+
+
 const Home = () => {
   const [input, setInput] = useState('');
   const [url, setURL] = useState('');
   const [quotes, setQuotes] = useState('"');
   const [bgColour, setBgColour] = useState('bg-gray-700');
+  const [showAlert, setShowAlert] = useState(false);
+  const [alert, setAlert] = useState(ALERT_SUCCESS_CONFIG);
 
   const textAreaCallback = (str:string) => {
     setInput(str);
@@ -22,28 +28,37 @@ const Home = () => {
       navigator.clipboard.writeText(text)
         .then(() => {
           console.log('Text copied to clipboard:', text);
-          // Optionally, you can show a success message to the user here
+          setAlert(ALERT_SUCCESS_CONFIG);
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          },ALERT_TIMEOUT)
         })
         .catch((err) => {
           console.error('Failed to copy text to clipboard:', err);
-          // Optionally, you can show an error message to the user here
+          setAlert(ALERT_FAIL_CONFIG);
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          },ALERT_TIMEOUT)
         });
     };
   
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-      <a
+      <div className={`container mx-sm mx-auto`}>
+        <div>
+          <a
             href="#"
-            target="_blank"
             rel="noopener noreferrer"
           >
             <Image
-              src="/jeb.svg"
+              src="/logo.svg"
               alt=""
-              width={100}
+              width={200}
               height={100}
               priority
+              className="mb-5"
             />
           </a>
       </div>
@@ -91,6 +106,15 @@ const Home = () => {
 
         
       </div>
+      </div>
+      <Toast 
+        show={showAlert}
+        type={alert.type}
+        message={alert.message}
+        onClose={() => {
+          setShowAlert(false)
+        }}
+      />
     </main>
   );
 }

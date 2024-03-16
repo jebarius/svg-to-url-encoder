@@ -11,7 +11,7 @@ interface ColourInterface {
 }
 
 const ColourToggle = ({options, callback}:ColourToggleInterface) => {
-    const [bgColour, setBgColour] = useState('bg-grey');
+    const [bgColour, setBgColour] = useState('bg-gray-700');
     const buttonStyles = BUTTON_STYLE;
     const activeButtonStyles = ACTIVE_BUTTON_STYLE;
   
