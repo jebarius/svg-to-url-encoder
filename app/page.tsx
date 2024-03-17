@@ -144,7 +144,8 @@ const Home = () => {
 
         <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'1.5s'}} id="about">
           <Title title="About The tool" classes="mb-3 mt-1"/>
-          <p>This was tool was developed one weekend so I had a consistent way of converting svgs to css background images easily. It's built using React, NextJS, Typescript and Tailwind.</p>
+          <p>This was tool was developed one weekend so I had a consistent way of converting svgs to css background images 
+            easily. The tool is built using React, NextJS, Typescript and Tailwind.</p>
         </div>
         <div className="fade-in-up w-full mt-10 py-3" style={{animationDelay:'2.5s'}}>
         <a
@@ -160,7 +161,7 @@ const Home = () => {
               priority
               className="mx-auto my-6"
             />
-            
+
           </a>
         </div>
       </div>
