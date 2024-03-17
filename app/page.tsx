@@ -58,8 +58,8 @@ const Home = () => {
           setShowAlert(false)
         }}
       />
-      <div className={`container mx-xs mx-auto`}>
-        <div className="fade-in-up flex justify-between items-center">
+      <div className={`w-full max-w-[860px] mx-xs mx-auto pb-6`}>
+      <div className="fade-in-up flex flex-col md:flex-row justify-between items-center">
           <a
             href="#"
             rel="noopener noreferrer"
@@ -76,12 +76,12 @@ const Home = () => {
 
           </a>
 
-          <nav className="flex">
+          <nav className="flex py-2 lg:py-0 md:py-0">
             
-            <a href="#about" className="mr-4 fade-in-up" style={{animationDelay:'1.5s'}}>About</a>
-            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up" style={{animationDelay:'1.6s'}} target="_blank">View Github</a>
-            <a href="https://jebari.us" className="mr-4 fade-in-up" style={{animationDelay:'1.7s'}} target="_blank">Other Work</a>
-            <a href="https://www.linkedin.com/in/jebarius/" className="mr-4 fade-in-up" style={{animationDelay:'1.8s'}} target="_blank">Contact</a>
+            <a href="#about" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.5s'}}>About</a>
+            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.6s'}} target="_blank">View Github</a>
+            <a href="https://jebari.us" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.7s'}} target="_blank">Other Work</a>
+            <a href="https://www.linkedin.com/in/jebarius/" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.8s'}} target="_blank">Contact</a>
           </nav>
       </div>
       <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'.25s'}}>
@@ -142,9 +142,27 @@ const Home = () => {
           </div>  
         </div>
 
-        <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'2s'}} id="about">
+        <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'1.5s'}} id="about">
           <Title title="About The tool" classes="mb-3 mt-1"/>
-          <p></p>
+          <p>This was tool was developed one weekend so I had a consistent way of converting svgs to css background images easily. It's built using React, NextJS, Typescript and Tailwind.</p>
+        </div>
+        <div className="fade-in-up w-full mt-10 py-3" style={{animationDelay:'2.5s'}}>
+        <a
+            href="https://jebari.us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/jeb.svg"
+              alt=""
+              width={60}
+              height={100}
+              priority
+              className="mx-auto my-6"
+            />
+
+
+          </a>
         </div>
       </div>
       
