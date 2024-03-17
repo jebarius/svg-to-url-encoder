@@ -160,8 +160,7 @@ const Home = () => {
               priority
               className="mx-auto my-6"
             />
-
-
+            
           </a>
         </div>
       </div>
