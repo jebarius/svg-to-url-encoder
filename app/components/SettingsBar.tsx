@@ -46,6 +46,7 @@ const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotes
                         type="number" 
                         id="elWidth" 
                         min={0}
+                        value={dimensions[0]}
                         aria-describedby="helper-text-explanation" 
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
                         disabled={currentMode == 'background' ? true : false}
@@ -60,6 +61,7 @@ const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotes
                             type="number" 
                             id="elHeight" 
                             min={0}
+                            value={dimensions[1]}
                             aria-describedby="helper-text-explanation" 
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
                             disabled={currentMode == 'background' ? true : false}

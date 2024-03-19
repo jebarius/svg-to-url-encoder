@@ -11,6 +11,7 @@ import Toast from "./components/Toast";
 import encodeSVG from "./utilities/encodeSvg";
 import SettingsBar from "./components/SettingsBar";
 import { QuotesType, MeasurementType } from "./types";
+import PreviewCanvas from "./components/PreviewCanvas";
 const MODES = {
   background:'Background Image',
   psudeo:'Psudeo Element',
@@ -89,10 +90,10 @@ const Home = () => {
 
           <nav className="flex py-2 lg:py-0 md:py-0">
             
-            <a href="#about" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.5s'}}>About</a>
-            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.6s'}} target="_blank">View Github</a>
-            <a href="https://jebari.us" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.7s'}} target="_blank">Other Work</a>
-            <a href="https://www.linkedin.com/in/jebarius/" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.8s'}} target="_blank">Contact</a>
+            <a href="#about" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1s'}}>About</a>
+            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.1s'}} target="_blank">View Github</a>
+            <a href="https://jebari.us" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.2s'}} target="_blank">Other Work</a>
+            <a href="https://www.linkedin.com/in/jebarius/" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.3s'}} target="_blank">Contact</a>
           </nav>
       </div>
 
@@ -160,33 +161,28 @@ const Home = () => {
           <DynamicTextArea placeholder="background-image:url(...." key={'dynamic-text-css-url'} label="URL" value={url.length > 0 ? `background-image:url(${quotes}${url}${quotes})` : ''} disabled={true}/>
         </div>
         <div className="rounded-md bg-gray-600 p-4 fade-in-up" style={{animationDelay:'.95s'}}>
-
-          <Title title="Preview" classes="mt-2" >
-            <ColourToggle options={[
-                {label:'transparent', colour:'bg-gray-700'},
-                {label:'black', colour:'bg-zinc-950'},
-                {label:'white', colour:'bg-neutral-100'},
-              ]}
-              callback={(str:string) => {
-                setBgColour(str);
-              }}
-            />
-          </Title>
+            <Title title="Preview" classes="mt-2" >
+              <ColourToggle options={[
+                  {label:'transparent', colour:'bg-gray-700'},
+                  {label:'black', colour:'bg-zinc-950'},
+                  {label:'white', colour:'bg-neutral-100'},
+                ]}
+                callback={(str:string) => {
+                  setBgColour(str);
+                }}
+              />
+            </Title>
             
-          
-        
-            <div className={`w-full px-4 py-2 rounded-lg ${bgColour} mt-4`}>
-              <div style={{backgroundImage:'url('+url+')'}} className={`w-full h-56 bg-contain bg-no-repeat bg-center ${bgColour}`}></div>
-            </div>
+            <PreviewCanvas mode={generateMode} bgColour={bgColour} url={url} />
           </div>  
         </div>
 
-        <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'1.5s'}} id="about">
+        <div className="rounded-md bg-gray-600 p-4 fade-in-up w-full my-4" style={{animationDelay:'1.05s'}} id="about">
           <Title title="About The tool" classes="mb-3 mt-1"/>
           <p>This was tool was developed one weekend so I had a consistent way of converting svgs to css background images 
             easily. The tool is built using React, NextJS, Typescript and Tailwind.</p>
         </div>
-        <div className="fade-in-up w-full mt-10 py-3" style={{animationDelay:'2.5s'}}>
+        <div className="fade-in-up w-full mt-10 py-3" style={{animationDelay:'1.15s'}}>
         <a
             href="https://jebari.us"
             target="_blank"
