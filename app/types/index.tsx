@@ -1,12 +1,18 @@
 export type QuotesType = '"' | "'";
 export type AlertType = 'error' | 'success' | 'warning';
+export type MeasurementType = 'px' | '%' | 'em' | 'rem' | 'vw';
 
 export interface SettingsInterface {
     modes:any,
     currentMode:string,
-    onModeChange:Function,
+    onModeChange:(str:string) => void,
     currentQuotes: QuotesType,
-    onQuotesChange:Function
+    onQuotesChange:(str:QuotesType) => void,
+    dimensions:Array<number>,
+    onDimensionsChange:(arr:Array<number>) => void,
+    measurement:MeasurementType,
+    measurementOptions:Array<MeasurementType>,
+    onMeasurementChange:(str:MeasurementType) => void,
 }
 
 export interface TextAreaProps {

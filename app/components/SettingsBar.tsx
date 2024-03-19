@@ -1,6 +1,6 @@
 import { SettingsInterface } from "../types";
 
-const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotesChange }: SettingsInterface) => {
+const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotesChange, dimensions, onDimensionsChange, measurementOptions, measurement ,onMeasurementChange }: SettingsInterface) => {
     return (
         <div className="grid grid-cols-1 gap-4">
             <div className="griditem">
@@ -39,9 +39,9 @@ const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotes
                 </select>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
                 <div className="griditem">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Width <small>(px)</small></label>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Width <small>({measurement})</small></label>
                     <input 
                         type="number" 
                         id="elWidth" 
@@ -49,20 +49,44 @@ const SettingsBar = ({ modes, currentMode, onModeChange, currentQuotes, onQuotes
                         aria-describedby="helper-text-explanation" 
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
                         disabled={currentMode == 'background' ? true : false}
+                        onChange={(e:any) => {
+                            onDimensionsChange([parseInt(e.target.value),dimensions[1]]);
+                        }}
                     />
                     </div>
                     <div className="griditem">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Height <small>(px)</small></label>
-                    <input 
-                        type="number" 
-                        id="elHeight" 
-                        min={0}
-                        aria-describedby="helper-text-explanation" 
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
-                        disabled={currentMode == 'background' ? true : false}
-                    />
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Height <small>({measurement})</small></label>
+                        <input 
+                            type="number" 
+                            id="elHeight" 
+                            min={0}
+                            aria-describedby="helper-text-explanation" 
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 
+                            disabled={currentMode == 'background' ? true : false}
+                            onChange={(e:any) => {
+                                
+                                onDimensionsChange([dimensions[0],parseInt(e.target.value)]);
+                            }}
+                        />
+                    </div>
+                    <div className="griditem">
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
+                    
+                        <select
+                            id="generate-mode"
+                            value={measurement}
+                            disabled={currentMode == 'background' ? true : false}
+                            onChange={(e: any) => {
+                                onMeasurementChange(e.target.value);
+                            }}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                        >
+                            {measurementOptions.map((val, key) => (
+                                <option value={val} key={key+"mopt"}>{val}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-            </div>
         </div>
     );
 };

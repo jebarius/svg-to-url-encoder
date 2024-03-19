@@ -10,13 +10,16 @@ import { BUTTON_STYLE, ALERT_SUCCESS_CONFIG, ALERT_FAIL_CONFIG, ALERT_TIMEOUT } 
 import Toast from "./components/Toast";
 import encodeSVG from "./utilities/encodeSvg";
 import SettingsBar from "./components/SettingsBar";
-import { QuotesType } from "./types";
+import { QuotesType, MeasurementType } from "./types";
 const MODES = {
   background:'Background Image',
   psudeo:'Psudeo Element',
   list:'List Item'
 };
 
+const MEASUREMENTS:Array<MeasurementType> = [
+  'px', '%', 'em', 'rem', 'vw'
+];
 
 const Home = () => {
   const [input, setInput] = useState('');
@@ -27,6 +30,8 @@ const Home = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState(ALERT_SUCCESS_CONFIG);
   const [generateMode, setGenerateMode] = useState('background');
+  const [dimensions, setDimensions] = useState<Array<number>>([100,100]);
+  const [measurement, setMeasurement] = useState<MeasurementType>('px');
 
   const textAreaCallback = (str:string) => {
     setInput(str);
@@ -100,13 +105,20 @@ const Home = () => {
         </div>
         <div className="flex-grow w-full md:w-1/3">
           <div className="h-full rounded-md bg-gray-600 p-4 fade-in-up" style={{ animationDelay: '.45s' }}>
+            
             <SettingsBar
               modes={MODES}
               currentMode={generateMode}
-              onModeChange={(str: string) => setGenerateMode(str)}
               currentQuotes={quotes}
+              dimensions={dimensions}
+              measurementOptions={MEASUREMENTS}
+              measurement={measurement}
+              onModeChange={(str: string) => setGenerateMode(str)}
               onQuotesChange={(str: QuotesType) => setQuotes(str)}
+              onDimensionsChange={(arr:Array<number>) => setDimensions(arr)}
+              onMeasurementChange={(str:MeasurementType) => setMeasurement(str)}
             />
+
           </div>
         </div>
       </div>
