@@ -1,13 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
-type AlertType = 'error' | 'success' | 'warning';
-
-interface AlertInterface {
-    type?: AlertType,
-    show: boolean,
-    message:string,
-    onClose?:Function
-}
+import { AlertInterface } from "../types";
 
 const Toast = ({ type = 'success', show = true, message, onClose }: AlertInterface) => {
     const [s, setS] = useState(false);

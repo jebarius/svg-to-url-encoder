@@ -1,14 +1,6 @@
 import {useState} from "react"
 import { BUTTON_STYLE, ACTIVE_BUTTON_STYLE } from "../config"
-interface ColourToggleInterface {
-    options:Array<ColourInterface>,
-    callback:Function,
-}
-
-interface ColourInterface {
-    label:string,
-    colour:string
-}
+import { ColourToggleInterface } from "../types";
 
 const ColourToggle = ({options, callback}:ColourToggleInterface) => {
     const [bgColour, setBgColour] = useState('bg-gray-700');

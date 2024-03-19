@@ -1,13 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-
-interface TextAreaProps {
-    label:string,
-    value:string,
-    onInputChange?:(data: string) => void,
-    disabled?:boolean,
-    placeholder:string
-}
+import { TextAreaProps } from "../types";
 
 const DynamicTextArea = ({label, value, onInputChange, disabled = false, placeholder}:TextAreaProps) => {
     const [textValue, setTextValue] = useState(value);
