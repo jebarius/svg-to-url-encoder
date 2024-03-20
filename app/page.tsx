@@ -1,5 +1,5 @@
 'use client';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 import DynamicTextArea from "./components/DynamicTextArea";
@@ -12,10 +12,11 @@ import encodeSVG from "./utilities/encodeSvg";
 import SettingsBar from "./components/SettingsBar";
 import { QuotesType, MeasurementType } from "./types";
 import PreviewCanvas from "./components/PreviewCanvas";
+import PseudoElement from "./utilities/PseudoElement";
 const MODES = {
   background:'Background Image',
-  psudeo:'Psudeo Element',
-  list:'List Item'
+  pseudo:'Pseudo Element',
+  //list:'List Item'
 };
 
 const MEASUREMENTS:Array<MeasurementType> = [
@@ -24,7 +25,8 @@ const MEASUREMENTS:Array<MeasurementType> = [
 
 const Home = () => {
   const [input, setInput] = useState('');
-  const [url, setURL] = useState('');
+  const [outputCode, setOutputCode] = useState('');
+  const [previewUrl, setPreviewURL] = useState('');
   const [encoded, setEncoded] = useState('');
   const [quotes, setQuotes] = useState<QuotesType>('"');
   const [bgColour, setBgColour] = useState('bg-gray-700');
@@ -35,9 +37,17 @@ const Home = () => {
   const [measurement, setMeasurement] = useState<MeasurementType>('px');
 
   const textAreaCallback = (str:string) => {
+    let enc = SvgToBackgroundImageUrl(str, quotes);
     setInput(str);
-    setURL(SvgToBackgroundImageUrl(str));
-    setEncoded(encodeSVG(str));
+    setEncoded(encodeSVG(str, quotes));
+    setPreviewURL(enc);
+
+    if(generateMode == 'background'){
+      setOutputCode(`background-image:url(${quotes}${enc}${quotes})`);
+    }else{
+      setOutputCode(PseudoElement(str, dimensions, measurement, quotes));
+    }
+    
   } 
 
   const CopyToClipboardButton = (text:string) => {
@@ -60,6 +70,13 @@ const Home = () => {
         });
     };
   
+    useEffect(() => {
+      if(input.length > 0){
+        console.log('refresh');
+        textAreaCallback(input)
+      }
+      
+    }, [generateMode, dimensions, measurement, quotes]);
   return (
     <main className={styles.main}>
      <Toast 
@@ -152,13 +169,13 @@ const Home = () => {
             <button 
             className={BUTTON_STYLE + ' rounded-md self-start'}
             onClick={(e:any) =>{
-              CopyToClipboardButton(`background-image:url(${quotes}${url}${quotes})`)
-            } }
+              CopyToClipboardButton(outputCode)
+            }}
             >
               Copy to clipboard
             </button>
           </Title>
-          <DynamicTextArea placeholder="background-image:url(...." key={'dynamic-text-css-url'} label="URL" value={url.length > 0 ? `background-image:url(${quotes}${url}${quotes})` : ''} disabled={true}/>
+          <DynamicTextArea placeholder="background-image:url(...." key={'dynamic-text-css-url'} label="URL" value={outputCode.length > 0 ? outputCode : ''} disabled={true}/>
         </div>
         <div className="rounded-md bg-gray-600 p-4 fade-in-up" style={{animationDelay:'.95s'}}>
             <Title title="Preview" classes="mt-2" >
@@ -173,7 +190,13 @@ const Home = () => {
               />
             </Title>
             
-            <PreviewCanvas mode={generateMode} bgColour={bgColour} url={url} />
+            <PreviewCanvas 
+              mode={generateMode} 
+              bgColour={bgColour} 
+              url={previewUrl} 
+              dimensions={dimensions} 
+              measurement={measurement} 
+            />
           </div>  
         </div>
 

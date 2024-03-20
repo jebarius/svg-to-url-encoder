@@ -15,6 +15,14 @@ export interface SettingsInterface {
     onMeasurementChange:(str:MeasurementType) => void,
 }
 
+export interface PreviewCanvasInterface {
+    bgColour:string,
+    url:string,
+    mode:string,
+    dimensions:Array<number>,
+    measurement:MeasurementType
+}
+
 export interface TextAreaProps {
     label:string,
     value:string,
