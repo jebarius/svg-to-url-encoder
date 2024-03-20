@@ -5,7 +5,7 @@ const PreviewCanvas = ({url, mode, bgColour, dimensions, measurement}:PreviewCan
     const listItemStyle = {
         listStyle: 'none',
         position: 'relative',
-    };
+    } as React.CSSProperties;
 
     const bulletStyle = {
         position: 'relative',
@@ -17,7 +17,7 @@ const PreviewCanvas = ({url, mode, bgColour, dimensions, measurement}:PreviewCan
         backgroundSize: 'contain',
         backgroundPosition:'center',
         backgroundRepeat:'no-repeat'
-    };
+    } as React.CSSProperties;
 
 
     return (
