@@ -1,8 +1,4 @@
-interface TitleInterface {
-    title:string,
-    classes?:string
-    children?:any
-}
+import { TitleInterface } from "../types";
 
 const Title = ({title, classes = '', children}:TitleInterface) => {
 
