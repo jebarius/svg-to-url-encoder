@@ -43,7 +43,7 @@ const Home = () => {
     setPreviewURL(enc);
 
     if(generateMode == 'background'){
-      setOutputCode(`background-image:url(${quotes}${enc}${quotes})`);
+      setOutputCode(`background-image:url(${quotes}${enc}${quotes});`);
     }else{
       setOutputCode(PseudoElement(str, dimensions, measurement, quotes));
     }

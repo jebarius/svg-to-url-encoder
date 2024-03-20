@@ -9,12 +9,18 @@ const PseudoElement = (url:string, dimensions:Array<number>, measurement:Measure
         svgstr = url.replace(/["']/g, "'");
     }
     
+    svgstr = `data:image/svg+xml;base64,${btoa(svgstr)}`;
 
     return `.element::before{
         content:${quotes}${quotes};
         width:${dimensions[0]}${measurement};
         height:${dimensions[1]}${measurement};
         background-image:url(${quotes}${svgstr}${quotes});
+        display: inline-block;
+        position:relative;
+        background-size: contain;
+        background-repeat:no-repeat;
+        background-position:center;
     }`;
 };
 
