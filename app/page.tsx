@@ -13,6 +13,9 @@ import SettingsBar from "./components/SettingsBar";
 import { QuotesType, MeasurementType } from "./types";
 import PreviewCanvas from "./components/PreviewCanvas";
 import PseudoElement from "./utilities/PseudoElement";
+import { ICON_CHECKMARK, ICON_CLOSE, ICON_HEART, ICON_PINEAPPLE, ICON_STAR} from './config/icons'
+import ExampleButtons from "./components/ExampleButtons";
+
 const MODES = {
   background:'Background Image',
   pseudo:'Pseudo Element',
@@ -116,9 +119,27 @@ const Home = () => {
 
       <div className="flex flex-col md:flex-row w-full my-4">
         <div className="flex-grow w-full md:w-2/3 pr-0 md:pr-4 mb-4 md:mb-0">
-          <div className="h-full rounded-md bg-gray-600 p-4 fade-in-up" style={{ animationDelay: '.25s' }}>
+          <div className="rounded-md bg-gray-600 p-4 fade-in-up" style={{ animationDelay: '.25s' }}>
             <Title title="SVG to CSS Converter" classes="mb-3 mt-1" />
             <p>This utility transforms SVG code into a Data URI, which is a URL format encoded for direct usage as a background-image source. Put simply, you can insert this converted SVG code directly into CSS, eliminating the necessity of uploading image files and reducing server requests.</p>
+          </div>
+          <div className="rounded-md bg-gray-600 mt-4 p-4 fade-in-up" style={{ animationDelay: '.25s' }}>
+          <Title title="Examples" classes="mb-2 mt-1">
+          <ExampleButtons options={[
+                  {label:'Checkmark', icon:ICON_CHECKMARK},
+                  {label:'Close', icon:ICON_CLOSE},
+                  {label:'Star', icon:ICON_STAR},
+                  {label:'Heart', icon:ICON_HEART},
+                  {label:'Pineapple', icon:ICON_PINEAPPLE},
+                ]}
+                callback={(str:string) => {
+                  textAreaCallback(str);
+                }}
+              />
+            </Title>
+          
+          
+          
           </div>
         </div>
         <div className="flex-grow w-full md:w-1/3">
@@ -149,7 +170,7 @@ const Home = () => {
         
         <div className="rounded-md bg-gray-600 p-4 fade-in-up" style={{animationDelay:'.65s'}}>
           <Title title="Your SVG" classes="mb-3 mt-1"/>
-          <DynamicTextArea placeholder="<svg ..." key={'dynamic-text-input'} label="Your Input" value="" onInputChange={textAreaCallback}/>
+          <DynamicTextArea placeholder="<svg ..." key={'dynamic-text-input'} label="Your Input" value={input} onInputChange={textAreaCallback}/>
         </div>
         <div className="rounded-md bg-gray-600 p-4 fade-in-up" style={{animationDelay:'.75s'}}>
           <Title title="Encoded SVG" classes="mb-4 mt-1">
