@@ -19,12 +19,11 @@ const ExampleButtons = ({options, callback}:ExampleButtonsInterface) => {
                         className={buttonClass}
                         onClick={(e:any) => {
                             e.preventDefault();
-                            console.log(option.icon)
                             callback(option.icon);
                         }}
                     >
                         
-                        <div className="icon-area" dangerouslySetInnerHTML={{ __html: option.icon }} style={{width:30, height:30}} />
+                        <div className="icon-area" dangerouslySetInnerHTML={{ __html: option.icon }} style={{width:22, height:22}} />
                        
                     </button>
                 );
