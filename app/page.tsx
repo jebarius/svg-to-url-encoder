@@ -123,7 +123,7 @@ const Home = () => {
             <Title title="SVG to CSS Converter" classes="mb-3 mt-1" />
             <p>This utility transforms SVG code into a Data URI, which is a URL format encoded for direct usage as a background-image source. Put simply, you can insert this converted SVG code directly into CSS, eliminating the necessity of uploading image files and reducing server requests.</p>
           </div>
-          <div className="rounded-md bg-gray-600 mt-4 p-4 fade-in-up" style={{ animationDelay: '.25s' }}>
+          <div className="rounded-md bg-gray-600 mt-4 p-4 fade-in-up" style={{ animationDelay: '.35s' }}>
           <Title title="Examples" classes="mb-2 mt-1">
           <ExampleButtons options={[
                   {label:'Checkmark', icon:ICON_CHECKMARK},
