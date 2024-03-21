@@ -2,9 +2,9 @@ const ICON_CHECKMARK = `<svg width="66" height="45" viewBox="0 0 66 45" fill="no
 <path d="M22 32.2222L59.95 0L66 6.66667L22 45L0 21.6667L6.6 15.5556L22 32.2222Z" fill="#E0E0E0"/>
 </svg>`;
 
-const ICON_CLOSE = `<svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="66.468" y="20.5061" width="7" height="65" transform="rotate(45 66.468 20.5061)" fill="#E0E0E0"/>
-<rect x="71.4178" y="66.468" width="7" height="65" transform="rotate(135 71.4178 66.468)" fill="#E0E0E0"/>
+const ICON_CLOSE = `<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="45.9619" width="9.00607" height="65" transform="rotate(45 45.9619 0)" fill="#E0E0E0"/>
+<rect width="9.00607" height="65" transform="matrix(-0.707107 0.707107 0.707107 0.707107 6.36826 0)" fill="#E0E0E0"/>
 </svg>
 `;
 
@@ -57,9 +57,10 @@ const ICON_PINEAPPLE = `<svg width="42" height="68" viewBox="0 0 42 68" fill="no
 </svg>
 `;
 
-const ICON_STAR = `<svg width="58" height="55" viewBox="0 0 58 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23.4667 19.884L29 2.8541L34.5333 19.884C34.868 20.9141 35.8279 21.6115 36.911 21.6115H54.8173L40.3308 32.1365C39.4546 32.7731 39.0879 33.9015 39.4226 34.9316L44.956 51.9615L30.4695 41.4364C29.5932 40.7998 28.4068 40.7998 27.5305 41.4364L13.044 51.9615L18.5774 34.9316C18.9121 33.9015 18.5454 32.7731 17.6692 32.1365L3.18272 21.6115H21.089C22.1721 21.6115 23.132 20.9141 23.4667 19.884Z" fill="#E0E0E0" stroke="#E0E0E0" stroke-width="3"/>
-</svg>`;
+const ICON_STAR = `<svg width="62" height="58" viewBox="0 0 62 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 4.8541L36.7579 22.575L37.0946 23.6115H38.1844H56.8173L41.743 34.5636L40.8613 35.2041L41.1981 36.2406L46.956 53.9615L31.8817 43.0094L31 42.3688L30.1183 43.0094L15.044 53.9615L20.8019 36.2406L21.1387 35.2041L20.257 34.5636L5.18272 23.6115H23.8156H24.9054L25.2421 22.575L31 4.8541Z" fill="#E0E0E0" stroke="#E0E0E0" stroke-width="3"/>
+</svg>
+`;
 
 
 export {
