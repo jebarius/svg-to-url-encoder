@@ -33,7 +33,17 @@ export interface TextAreaProps {
 
 export interface ColourToggleInterface {
     options:Array<ColourInterface>,
-    callback:Function,
+    callback:(data: string) => void,
+}
+
+export interface ExampleButtonsInterface {
+    options:Array<ExampleButtonInterface>,
+    callback:(data: string) => void,
+}
+
+export interface ExampleButtonInterface {
+    label:string,
+    icon:string
 }
 
 export interface ColourInterface {
