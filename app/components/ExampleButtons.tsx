@@ -11,7 +11,7 @@ const ExampleButtons = ({options, callback}:ExampleButtonsInterface) => {
             {options.map((option, index) => {
                 const isFirst = index === 0;
                 const isLast = index === options.length - 1;
-                const buttonClass = `${buttonStyles} ${isFirst ? 'rounded-l-md border-r-0' : ''} ${isLast ? 'rounded-r-md border-l-0' : ''}`;
+                const buttonClass = `${buttonStyles} ${isFirst ? 'rounded-l-md border-r-1' : 'border-l-0'} ${isLast ? 'rounded-r-md' : ''}`;
 
                 return (
                     <button
