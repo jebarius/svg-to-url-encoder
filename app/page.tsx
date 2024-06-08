@@ -111,7 +111,7 @@ const Home = () => {
           <nav className="flex py-2 lg:py-0 md:py-0">
             
             <a href="#about" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1s'}}>About</a>
-            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.1s'}} target="_blank">View Github</a>
+            <a href="https://github.com/jebarius/svg-to-url-encoder" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.1s'}} target="_blank">View on Github</a>
             <a href="https://jebari.us" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.2s'}} target="_blank">Other Work</a>
             <a href="https://www.linkedin.com/in/jebarius/" className="mr-4 fade-in-up hover:text-red-500 transition hover:ease-in" style={{animationDelay:'1.3s'}} target="_blank">Contact</a>
           </nav>
