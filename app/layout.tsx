@@ -1,9 +1,8 @@
-
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
 import 'tailwindcss/tailwind.css'
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+
 
 const roboto = Roboto({
   weight: '400',
@@ -28,11 +27,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
+
   return (
     <html lang="en">
         <body className={roboto.className}>
           {children}
-          <Analytics />
           
         </body>
     </html>

@@ -15,6 +15,7 @@ import PreviewCanvas from "./components/PreviewCanvas";
 import PseudoElement from "./utilities/PseudoElement";
 import { ICON_CHECKMARK, ICON_CLOSE, ICON_HEART, ICON_PINEAPPLE, ICON_STAR} from './config/icons'
 import ExampleButtons from "./components/ExampleButtons";
+import Plausible from 'plausible-tracker'
 
 const MODES = {
   background:'Background Image',
@@ -39,6 +40,15 @@ const Home = () => {
   const [dimensions, setDimensions] = useState<Array<number>>([100,100]);
   const [measurement, setMeasurement] = useState<MeasurementType>('px');
 
+
+  const { trackPageview } = Plausible({
+    domain: 'svg-to-css.jebari.us',
+    apiHost:'https://analytics.jebari.us'
+  })
+
+  trackPageview();
+
+  
   const textAreaCallback = (str:string) => {
     let enc = SvgToBackgroundImageUrl(str, quotes);
     setInput(str);
