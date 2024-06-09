@@ -46,9 +46,13 @@ const Home = () => {
     apiHost:'https://analytics.jebari.us'
   })
 
-  trackPageview();
 
+  if(typeof location !== 'undefined'){
+    trackPageview();
+  }
   
+
+
   const textAreaCallback = (str:string) => {
     let enc = SvgToBackgroundImageUrl(str, quotes);
     setInput(str);
