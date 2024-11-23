@@ -42,8 +42,7 @@ const Home = () => {
 
 
   const { trackPageview } = Plausible({
-    domain: 'svg-to-css.jebari.us',
-    apiHost:'https://analytics.jebari.us'
+    domain: 'svg-to-css.jebari.us'
   })
 
 
