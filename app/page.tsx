@@ -41,7 +41,7 @@ const Home = () => {
   const [measurement, setMeasurement] = useState<MeasurementType>('px');
 
 
-  const { trackPageview } = Plausible({
+  const { trackPageview, trackEvent } = Plausible({
     domain: 'svg-to-css.jebari.us'
   })
 
@@ -67,6 +67,7 @@ const Home = () => {
   } 
 
   const CopyToClipboardButton = (text:string) => {
+      trackEvent('copied')
       navigator.clipboard.writeText(text)
         .then(() => {
           console.log('Text copied to clipboard:', text);
