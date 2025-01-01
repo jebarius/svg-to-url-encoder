@@ -16,12 +16,6 @@ export const metadata: Metadata = {
 };
 
 
-let isLocalhost = true;
-if (typeof window !== 'undefined') {
-  isLocalhost = window.location.hostname.includes('localhost');
-  
-}
-console.log('Is localhost:', isLocalhost);
 export default function RootLayout({
   children,
 }: Readonly<{
